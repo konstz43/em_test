@@ -30,10 +30,8 @@ chmod 644 /etc/systemd/system/testmon.service
 chmod 644 /etc/systemd/system/testmon.timer
 
 systemctl daemon-reload
-systemctl start testmon.service
-systemctl enable testmon.service
-systemctl start testmon.timer
-systemctl enable testmon.timer
+systemctl enable --now testmon.service
+systemctl enable --now testmon.timer
 
 cp -f monitoring /etc/logrotate.d/monitoring
 chmod 644 /etc/logrotate.d/monitoring
