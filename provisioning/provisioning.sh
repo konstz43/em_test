@@ -34,3 +34,14 @@ systemctl start testmon.service
 systemctl enable testmon.service
 systemctl start testmon.timer
 systemctl enable testmon.timer
+
+cp -f monitoring /etc/logrotate.d/monitoring
+chmod 644 /etc/logrotate.d/monitoring
+
+echo "Provisioning completed. Monitoring script installed to $TARGET_DIR"
+echo "Service and timer units installed to /etc/systemd/system/"
+echo "Logrotate configuration installed to /etc/logrotate.d/monitoring"
+echo "You can check the status of the service with: systemctl status testmon.service"
+echo "You can check the status of the timer with: systemctl status testmon.timer"
+echo "Make sure to adjust the MON_SERV_URI and PROC_NAME variables in $TARGET_DIR/testmon.sh as needed."
+echo "You can check the log file with: tail -f /var/log/monitoring.log"
